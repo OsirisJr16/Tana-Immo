@@ -1,0 +1,24 @@
+{
+  "name": "taram-test-tana-immo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "vitest run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OsirisJr16/Tana-Immo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/OsirisJr16/Tana-Immo/issues"
+  },
+  "homepage": "https://github.com/OsirisJr16/Tana-Immo#readme"
+}
