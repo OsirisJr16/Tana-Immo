@@ -21,3 +21,13 @@ Extrait B - Route API de recherche d'annonces (Express + PostgreSQL)
 | Absence de limite sur le nombre de résultats                    | Haute    | Définir une taille de page maximale                                    |
 | Utilisation de `SELECT *`                                       | Moyenne  | Sélectionner explicitement les colonnes nécessaires                    |
 
+
+Extrait C - Webhook de confirmation de paiement
+
+| Problème                                                                                                     | Sévérité | Correction                                                                                |
+| ------------------------------------------------------------------------------------------------------------ | -------- | ----------------------------------------------------------------------------------------- |
+| L'appel CRM peut prendre 2 à 8 secondes et s'ajoute aux autres opérations avant le `200`                     | Critique | Répondre rapidement et traiter les actions secondaires de manière asynchrone              |
+| En cas de retry, le même événement peut être traité plusieurs fois, notamment l'email et la notification CRM | Critique | Mettre en place une idempotence basée sur un identifiant unique fourni par le prestataire |
+| Pas de gestion des erreurs                                                                                   | Haute    | Ajouter un `try/catch` et gérer les erreurs de traitement                                 |
+| Le traitement du webhook dépend directement des services externes (email, CRM)                               | Haute    | Découpler les traitements secondaires du webhook avec une file/job asynchrone             |
+| Pas de vérification d'authenticité du webhook                                                                | Moyenne  | Vérifier la signature du prestataire **si ce mécanisme est fourni**                       |
